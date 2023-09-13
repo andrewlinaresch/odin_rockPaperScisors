@@ -24,6 +24,8 @@ function getCompSelection(){
 function getPlayerSelection(){
     //prompt for user input
     let playerInput = prompt("enter your choice");
+    //check for null (no input)
+    if (playerInput === null) return false;
     //format user input to be all lowercase
     playerInput = playerInput.toLowerCase();
     //check for validity of input 
@@ -70,7 +72,7 @@ function playGame(){
 
         //check for valid input
         if (!playerChoice){
-            console.log('invalid input')
+            console.log('Invalid input! Try again!')
         }else{
             console.log("You chose " + playerChoice + " and computer chose " + compChoice + ", the result: " + playRound(playerChoice,compChoice));
             console.log('The current score is player: ' + playerScore + " computer: " + compScore)
