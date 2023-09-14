@@ -1,6 +1,6 @@
 //main
 let compScore = 0, playerScore = 0;
-let options = ['rock', 'paper', 'scisors'];
+const options = ['rock', 'paper', 'scisors'];
     //plays 5 rounds and declares a winner
 playGame();
 
@@ -23,9 +23,9 @@ function getCompSelection(){
 //get user choice
 function getPlayerSelection(){
     //prompt for user input
-    let playerInput = prompt("enter your choice");
+    let playerInput = prompt("Enter your choice! Press cancel to exit.");
     //check for null (no input)
-    if (playerInput === null) return false;
+    if (playerInput == null) return null;
     //format user input to be all lowercase
     playerInput = playerInput.toLowerCase();
     //check for validity of input 
@@ -68,15 +68,16 @@ function playGame(){
         //get player and computer choices
         let compChoice = getCompSelection();
         let playerChoice = getPlayerSelection();
-        console.log('You chose ' + playerChoice);
+        console.log('You choses ' + playerChoice);
 
         //check for valid input
+        if (playerChoice === null) break;
         if (!playerChoice){
-            console.log('Invalid input! Try again!')
+            console.log('Invalid input! Restart game!')
         }else{
             console.log("You chose " + playerChoice + " and computer chose " + compChoice + ", the result: " + playRound(playerChoice,compChoice));
             console.log('The current score is player: ' + playerScore + " computer: " + compScore)
         }
     }
-    console.log((playerScore < compScore) ? 'Computer won the game' : 'Player won the Game');
+    console.log((playerScore == compScore) ? 'Thank you for playing' : (playerScore < compScore) ? 'Computer won the game' : 'Player won the Game');
 }
