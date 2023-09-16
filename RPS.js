@@ -2,7 +2,7 @@
 let compScore = 0, playerScore = 0;
 const options = ['rock', 'paper', 'scisors'];
     //plays 5 rounds and declares a winner
-playGame();
+//playGame();
 
 
 //random number between 0 through 2
@@ -21,9 +21,11 @@ function getCompSelection(){
 }
 
 //get user choice
-function getPlayerSelection(){
+function getPlayerSelection(playerInput){
     //prompt for user input
-    let playerInput = prompt("Enter your choice! Press cancel to exit.");
+    
+    //add event listener to buttons
+    
     //check for null (no input)
     if (playerInput == null) return null;
     //format user input to be all lowercase
@@ -63,11 +65,11 @@ function playRound(playerChoice, compChoice){
     }
 }
 
-function playGame(){
+function playGame(playerChoice){
     while (playerScore < 5 && compScore < 5){
         //get player and computer choices
         let compChoice = getCompSelection();
-        let playerChoice = getPlayerSelection();
+        playerChoice = getPlayerSelection(playerChoice);
         console.log('You choses ' + playerChoice);
 
         //check for valid input
@@ -81,3 +83,12 @@ function playGame(){
     }
     console.log((playerScore == compScore) ? 'Thank you for playing' : (playerScore < compScore) ? 'Computer won the game' : 'Player won the Game');
 }
+
+//let buttons = document.getElementsByTagName('button');
+let buttonOptions = document.querySelector('.options');
+let buttons = buttonOptions.querySelectorAll('.option');
+
+buttons.forEach(button => button.addEventListener('click',() => {
+    console.log(button.textContent);
+    playGame(button.textContent);
+}));
