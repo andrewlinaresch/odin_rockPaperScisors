@@ -1,6 +1,8 @@
 //main
 let compScore = 0, playerScore = 0;
-const options = ['rock', 'paper', 'scisors'];
+const options = ['rock', 'paper', 'scissors'];
+const results = document.querySelector('.results');
+
     //plays 5 rounds and declares a winner
 //playGame();
 
@@ -65,30 +67,38 @@ function playRound(playerChoice, compChoice){
     }
 }
 
-function playGame(playerChoice){
-    while (playerScore < 5 && compScore < 5){
+function playGame(playerChoice, results){
+   // while (playerScore < 5 && compScore < 5){
+        if ( playerScore == 5 || compScore == 5){
+            console.log("Game over");
+            gameOver(results);
+            return;
+        }
         //get player and computer choices
         let compChoice = getCompSelection();
         playerChoice = getPlayerSelection(playerChoice);
-        console.log('You choses ' + playerChoice);
 
         //check for valid input
-        if (playerChoice === null) break;
+        if (playerChoice === null) return;
         if (!playerChoice){
             console.log('Invalid input! Restart game!')
         }else{
-            console.log("You chose " + playerChoice + " and computer chose " + compChoice + ", the result: " + playRound(playerChoice,compChoice));
+            console.log("You chose " + playerChoice + " and the computer chose " + compChoice + ", the result: " + playRound(playerChoice,compChoice));
             console.log('The current score is player: ' + playerScore + " computer: " + compScore)
         }
-    }
-    console.log((playerScore == compScore) ? 'Thank you for playing' : (playerScore < compScore) ? 'Computer won the game' : 'Player won the Game');
+    //}
+    //console.log((playerScore == compScore) ? 'Thank you for playing' : (playerScore < compScore) ? 'Computer won the game' : 'Player won the Game');
+}
+
+function gameOver(results){
+    results.textContent = `Game Over! Final Score of Player: ${playerScore} Computer: ${compScore}`;
 }
 
 //let buttons = document.getElementsByTagName('button');
 let buttonOptions = document.querySelector('.options');
 let buttons = buttonOptions.querySelectorAll('.option');
 
+
 buttons.forEach(button => button.addEventListener('click',() => {
-    console.log(button.textContent);
-    playGame(button.textContent);
+    playGame(button.textContent, results);
 }));
