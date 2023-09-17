@@ -93,7 +93,8 @@ function playGame(playerChoice, results){
 }
 
 function gameOver(results){
-    results.textContent = `Game Over! Final Score of Player: ${playerScore} Computer: ${compScore}`;
+    let winner = (playerScore > compScore) ? 'Player': 'Computer';
+    results.textContent = `Game Over! ${winner} is the winner.`;
 }
 function dispScore(score){
     score.textContent = `The current score is Player: ${playerScore} Computer: ${compScore}`;
