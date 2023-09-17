@@ -2,6 +2,7 @@
 let compScore = 0, playerScore = 0;
 const options = ['rock', 'paper', 'scissors'];
 const results = document.querySelector('.results');
+const score = document.querySelector('.score');
 
     //plays 5 rounds and declares a winner
 //playGame();
@@ -84,7 +85,8 @@ function playGame(playerChoice, results){
             console.log('Invalid input! Restart game!')
         }else{
             console.log("You chose " + playerChoice + " and the computer chose " + compChoice + ", the result: " + playRound(playerChoice,compChoice));
-            console.log('The current score is player: ' + playerScore + " computer: " + compScore)
+            dispScore(score);
+            //console.log('The current score is player: ' + playerScore + " computer: " + compScore)
         }
     //}
     //console.log((playerScore == compScore) ? 'Thank you for playing' : (playerScore < compScore) ? 'Computer won the game' : 'Player won the Game');
@@ -92,6 +94,9 @@ function playGame(playerChoice, results){
 
 function gameOver(results){
     results.textContent = `Game Over! Final Score of Player: ${playerScore} Computer: ${compScore}`;
+}
+function dispScore(score){
+    score.textContent = `The current score is Player: ${playerScore} Computer: ${compScore}`;
 }
 
 //let buttons = document.getElementsByTagName('button');
