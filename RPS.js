@@ -46,11 +46,11 @@ function getPlayerSelection(playerInput){
 
 //compare two values to see who wins
 function playRound(playerChoice, compChoice){
-    let div = document.createElement('div');
+    let h3 = document.createElement('h3');
     
     //check if the two are equal 
     if (compChoice === playerChoice){
-        div.textContent = 'there was tie';
+        h3.textContent = 'there was tie';
         //console.log("there was a tie");
     }
 
@@ -59,18 +59,18 @@ function playRound(playerChoice, compChoice){
         if (compChoice===options[i]){ //stop at whatever option comp made to check agains player option
             if (i == 0 && playerChoice===options[2]){ //first check for exception to rule of one behind comp choice in options
                 compScore++;
-                div.textContent = 'Computer wins';
+                h3.textContent = 'Computer wins';
             }else if (playerChoice===options[i-1]){ //if the player choice is one behind in array then computer wins 
                 compScore++;
-                div.textContent = 'Computer wins';
+                h3.textContent = 'Computer wins';
             } else {
                 playerScore++;
-                div.textContent = 'Player wins';//else player wins
+                h3.textContent = 'Player wins';//else player wins
             }
         }
     }
 
-    return div;
+    return h3;
 }
 
 function playGame(playerChoice){
@@ -90,6 +90,7 @@ function playGame(playerChoice){
             console.log('Invalid input! Restart game!')
         }else{
             //console.log("You chose " + playerChoice + " and the computer chose " + compChoice + ", the result: " + playRound(playerChoice,compChoice));
+            delPrevInstruc(instructions);
             instructions.appendChild(playRound(playerChoice, compChoice));
             dispScore(score);
             //console.log('The current score is player: ' + playerScore + " computer: " + compScore)
@@ -104,6 +105,10 @@ function gameOver(results){
 }
 function dispScore(score){
     score.textContent = `The current score is Player: ${playerScore} Computer: ${compScore}`;
+}
+
+function delPrevInstruc(){
+    instructions.removeChild(instructions.children[0]);
 }
 
 //let buttons = document.getElementsByTagName('button');
