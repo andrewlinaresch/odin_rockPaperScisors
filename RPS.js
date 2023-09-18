@@ -51,7 +51,7 @@ function playRound(playerChoice, compChoice){
     
     //check if the two are equal 
     if (compChoice === playerChoice){
-        roundResults += 'there was tie';
+        roundResults += 'There was tie!';
         h3.textContent = roundResults;
         return h3;
         //console.log("there was a tie");
@@ -62,13 +62,13 @@ function playRound(playerChoice, compChoice){
         if (compChoice===options[i]){ //stop at whatever option comp made to check agains player option
             if (i == 0 && playerChoice===options[2]){ //first check for exception to rule of one behind comp choice in options
                 compScore++;
-                roundResults += `Computer wins, ${compChoice} beats ${playerChoice}`;
+                roundResults += `Computer wins, ${compChoice} beats ${playerChoice}!`;
             }else if (playerChoice===options[i-1]){ //if the player choice is one behind in array then computer wins 
                 compScore++;
-                roundResults += `Computer wins, ${compChoice} beats ${playerChoice}`;
+                roundResults += `Computer wins, ${compChoice} beats ${playerChoice}!`;
             } else {
                 playerScore++;
-                roundResults += `Player wins, ${playerChoice} beats ${compChoice}`;//else player wins
+                roundResults += `Player wins, ${playerChoice} beats ${compChoice}!`;//else player wins
             }
         }
     }
