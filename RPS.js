@@ -39,7 +39,7 @@ function getPlayerSelection(playerInput){
 //Returns an h3 element with round winner
 function playRound(playerChoice, compChoice){
     let h3 = document.createElement('h3');
-    let roundResults = `You choose ${playerChoice} and computer choose ${compChoice}. Round result: `;
+    let roundResults = `You chose ${playerChoice} and computer choses ${compChoice}. Round result: `;
     
     //check if the two are equal 
     if (compChoice === playerChoice){
