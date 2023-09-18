@@ -99,6 +99,11 @@ function playGame(playerChoice){
             dispScore(score);
             //console.log('The current score is player: ' + playerScore + " computer: " + compScore)
         }
+        if ( playerScore == 5 || compScore == 5){
+            //console.log("Game over");
+            gameOver(results);
+            return;
+        }
     //}
     //console.log((playerScore == compScore) ? 'Thank you for playing' : (playerScore < compScore) ? 'Computer won the game' : 'Player won the Game');
 }
@@ -115,11 +120,23 @@ function delPrevInstruc(){
     instructions.removeChild(instructions.children[0]);
 }
 
+function restartGame(){
+    playerScore = 0;
+    compScore = 0;
+    score.textContent = '';
+    results.textContent = '';   
+}
+
 //let buttons = document.getElementsByTagName('button');
 let buttonOptions = document.querySelector('.options');
 let buttons = buttonOptions.querySelectorAll('.option');
+let restart = buttonOptions.querySelector('.restart');
 
 
 buttons.forEach(button => button.addEventListener('click',() => {
     playGame(button.textContent);
 }));
+
+restart.addEventListener('click',()=>{
+    restartGame(instructions ,score ,results);
+});
