@@ -127,7 +127,7 @@ function restartGame(){
     results.textContent = ''; 
     
     let h2 = document.createElement('h2');
-    h2.textContent = "Click an option bellow to play"
+    h2.textContent = "Click an option below to play"
     delPrevInstruc(instructions);
     instructions.appendChild(h2);
 }
