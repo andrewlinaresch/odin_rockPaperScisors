@@ -47,10 +47,13 @@ function getPlayerSelection(playerInput){
 //compare two values to see who wins
 function playRound(playerChoice, compChoice){
     let h3 = document.createElement('h3');
+    let roundResults = `You choose ${playerChoice} and computer choose ${compChoice}. Round result: `;
     
     //check if the two are equal 
     if (compChoice === playerChoice){
-        h3.textContent = 'there was tie';
+        roundResults += 'there was tie';
+        h3.textContent = roundResults;
+        return h3;
         //console.log("there was a tie");
     }
 
@@ -59,17 +62,18 @@ function playRound(playerChoice, compChoice){
         if (compChoice===options[i]){ //stop at whatever option comp made to check agains player option
             if (i == 0 && playerChoice===options[2]){ //first check for exception to rule of one behind comp choice in options
                 compScore++;
-                h3.textContent = 'Computer wins';
+                roundResults += `Computer wins, ${compChoice} beats ${playerChoice}`;
             }else if (playerChoice===options[i-1]){ //if the player choice is one behind in array then computer wins 
                 compScore++;
-                h3.textContent = 'Computer wins';
+                roundResults += `Computer wins, ${compChoice} beats ${playerChoice}`;
             } else {
                 playerScore++;
-                h3.textContent = 'Player wins';//else player wins
+                roundResults += `Player wins, ${playerChoice} beats ${compChoice}`;//else player wins
             }
         }
     }
 
+    h3.textContent = roundResults;
     return h3;
 }
 
