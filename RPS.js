@@ -5,10 +5,6 @@ const results = document.querySelector('.results');
 const score = document.querySelector('.score');
 const instructions = document.querySelector('.instructions');
 
-    //plays 5 rounds and declares a winner
-//playGame();
-
-
 //random number between 0 through 2
 function randChoice(){
    let choice = Math.floor(Math.random() * 3);
@@ -20,16 +16,12 @@ function getCompSelection(){
     //choose random number 0 through 2
     let compChoice = randChoice();
     //compare number to a list of strings with R P S
-    //set computer choice to that comparison
+    //sets computer choice to that comparison
     return options[compChoice]
 }
 
-//get user choice
+//checks validity of playerInput
 function getPlayerSelection(playerInput){
-    //prompt for user input
-    
-    //add event listener to buttons
-    
     //check for null (no input)
     if (playerInput == null) return null;
     //format user input to be all lowercase
@@ -44,7 +36,7 @@ function getPlayerSelection(playerInput){
 
 }
 
-//compare two values to see who wins
+//Returns an h3 element with round winner
 function playRound(playerChoice, compChoice){
     let h3 = document.createElement('h3');
     let roundResults = `You choose ${playerChoice} and computer choose ${compChoice}. Round result: `;
@@ -54,7 +46,6 @@ function playRound(playerChoice, compChoice){
         roundResults += 'There was tie!';
         h3.textContent = roundResults;
         return h3;
-        //console.log("there was a tie");
     }
 
     //check who wins through if loops
@@ -77,10 +68,10 @@ function playRound(playerChoice, compChoice){
     return h3;
 }
 
+
 function playGame(playerChoice){
-   // while (playerScore < 5 && compScore < 5){
+        //sets game over instructions after score limit has been reached
         if ( playerScore == 5 || compScore == 5){
-            //console.log("Game over");
             gameOver(results);
             return;
         }
@@ -92,26 +83,25 @@ function playGame(playerChoice){
         if (playerChoice === null) return;
         if (!playerChoice){
             console.log('Invalid input! Restart game!')
-        }else{
-            //console.log("You chose " + playerChoice + " and the computer chose " + compChoice + ", the result: " + playRound(playerChoice,compChoice));
+        }else{ //plays round if input is valid
             delPrevInstruc(instructions);
             instructions.appendChild(playRound(playerChoice, compChoice));
             dispScore(score);
-            //console.log('The current score is player: ' + playerScore + " computer: " + compScore)
         }
+        //sets game over instructions
         if ( playerScore == 5 || compScore == 5){
-            //console.log("Game over");
             gameOver(results);
             return;
         }
-    //}
-    //console.log((playerScore == compScore) ? 'Thank you for playing' : (playerScore < compScore) ? 'Computer won the game' : 'Player won the Game');
 }
 
+//appends results with winner
 function gameOver(results){
     let winner = (playerScore > compScore) ? 'Player': 'Computer';
     results.textContent = `Game Over! ${winner} is the winner.`;
 }
+
+//appens score div with score
 function dispScore(score){
     score.textContent = `The current score is Player: ${playerScore} Computer: ${compScore}`;
 }
@@ -120,6 +110,7 @@ function delPrevInstruc(){
     instructions.removeChild(instructions.children[0]);
 }
 
+//resets game to defaults
 function restartGame(){
     playerScore = 0;
     compScore = 0;
@@ -138,6 +129,7 @@ let buttons = buttonOptions.querySelectorAll('.option');
 let restart = buttonOptions.querySelector('.restart');
 
 
+//event listeners for buttons
 buttons.forEach(button => button.addEventListener('click',() => {
     playGame(button.textContent);
 }));
