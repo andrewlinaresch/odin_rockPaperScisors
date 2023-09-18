@@ -124,7 +124,12 @@ function restartGame(){
     playerScore = 0;
     compScore = 0;
     score.textContent = '';
-    results.textContent = '';   
+    results.textContent = ''; 
+    
+    let h2 = document.createElement('h2');
+    h2.textContent = "Click an option bellow to play"
+    delPrevInstruc(instructions);
+    instructions.appendChild(h2);
 }
 
 //let buttons = document.getElementsByTagName('button');
