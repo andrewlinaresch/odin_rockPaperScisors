@@ -26,6 +26,8 @@ button.restart {
 .results{
     background-color: #c08261;
     color: #f2ecbe;
+    display: flex;
+    justify-content: center;
 }
 
 
