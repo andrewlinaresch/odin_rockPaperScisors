@@ -1,0 +1,68 @@
+body {
+    background-color: #9A3B3B;
+}
+
+h1, .instructions {
+    color: #f2ecbe;
+    border-style: outset;
+    border-width: 5px;
+    padding: 10px 20px 10px 20px;
+}
+
+button.option {
+    background-color: #c08261;
+    color: #ffff;
+}
+
+button.restart {
+    background-color: #ff0000;
+    color: #ffff;
+}
+
+.score {
+    color: #e2c799;
+}
+
+.results{
+    background-color: #c08261;
+    color: #f2ecbe;
+}
+
+
+
+/* allignment and sizes*/
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.instructions {
+    padding: 5px 20px 10px 20px;
+    margin-bottom: 20px;
+}
+
+button {
+    font-size: 30px;
+    padding: 5px 20px 5px 20px;
+    border-style:solid;
+    border-color: #0000;
+    margin: 5px 10px 5px 10px;
+}
+
+.options {
+    display: flex;
+    justify-content:space-between;
+}
+
+.display{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 25px;
+}
+
+.score, .results{
+    margin-top: 10px;
+}
